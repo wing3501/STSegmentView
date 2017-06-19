@@ -204,7 +204,15 @@
         //重新计算布局
         self.titleLabelW = _titleLabelW;
     }
+    
+    if (_sliderColor) {
+        self.slider.backgroundColor = _sliderColor;
+    }
+    
 }
+
+
+
 
 
 /**
