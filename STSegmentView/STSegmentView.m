@@ -39,12 +39,24 @@
  @param titleArray 标题数组
  */
 - (void)setTitleArray:(NSArray *)titleArray {
-    _titleArray = titleArray;
-    if (titleArray.count) {
-        [self.bottomLabelArray removeAllObjects];
-        [self.topLabelArray removeAllObjects];
-        [self.buttonArray removeAllObjects];
-        self.titleLabelW = (self.bounds.size.width - _titleSpacing * (titleArray.count - 1))/titleArray.count;
+    
+    if (_titleArray.count == titleArray.count) {
+        //只替换标题文字
+        for (int i = 0; i < titleArray.count; i ++) {
+            UILabel *bottomLabel = self.bottomLabelArray[i];
+            UILabel *topLabel = self.topLabelArray[i];
+            bottomLabel.text = titleArray[i];
+            topLabel.text = titleArray[i];
+        }
+    }else{
+        _titleArray = titleArray;
+        
+        if (titleArray.count) {
+            [self.bottomLabelArray removeAllObjects];
+            [self.topLabelArray removeAllObjects];
+            [self.buttonArray removeAllObjects];
+            self.titleLabelW = (self.bounds.size.width - _titleSpacing * (titleArray.count - 1))/titleArray.count;
+        }
     }
 }
 

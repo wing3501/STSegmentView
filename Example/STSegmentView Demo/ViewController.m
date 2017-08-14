@@ -8,6 +8,10 @@
 
 #import "ViewController.h"
 #import "STSegmentView.h"
+
+#define RGBA(r,g,b,a)     [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+#define RGB(r, g, b) RGBA((r), (g), (b), 1.0)
+
 @interface ViewController ()<UIScrollViewDelegate,STSegmentViewDelegate>
 
 @property (nonatomic,strong) STSegmentView *exampleSegmentView1;
@@ -29,7 +33,7 @@
     [self.view addSubview:_exampleSegmentView1];
     
     
-    _exampleSegmentView2 = [[STSegmentView alloc]initWithFrame:CGRectMake(0, 90, self.view.bounds.size.width, 50)];
+    _exampleSegmentView2 = [[STSegmentView alloc]initWithFrame:CGRectMake(20, 90, self.view.bounds.size.width - 40, 50)];
     _exampleSegmentView2.titleArray = @[@"test1",@"test2",@"test3",@"test4"];
     _exampleSegmentView2.topLabelTextColor = [UIColor redColor];
     _exampleSegmentView2.bottomLabelTextColor = [UIColor blueColor];
@@ -41,10 +45,11 @@
     
     _exampleSegmentView3 = [[STSegmentView alloc]initWithFrame:CGRectMake(0, 160, self.view.bounds.size.width, 50)];
     _exampleSegmentView3.titleArray = @[@"test1",@"test2",@"test3",@"test4"];
-    _exampleSegmentView3.topLabelTextColor = [UIColor redColor];
-    _exampleSegmentView3.bottomLabelTextColor = [UIColor blueColor];
-    _exampleSegmentView3.selectedBackgroundColor = [UIColor whiteColor];
-    _exampleSegmentView3.sliderColor = [UIColor blackColor];
+    _exampleSegmentView3.backgroundColor = RGB(50, 53, 57);
+    _exampleSegmentView3.topLabelTextColor = RGB(255, 199, 72);
+    _exampleSegmentView3.bottomLabelTextColor = [UIColor whiteColor];
+    _exampleSegmentView3.selectedBackgroundColor = [UIColor clearColor];
+    _exampleSegmentView3.sliderColor = RGB(255, 199, 72);
     _exampleSegmentView3.sliderHeight = 5;
     _exampleSegmentView3.titleSpacing = 20;
     [self.view addSubview:_exampleSegmentView3];
@@ -92,7 +97,17 @@
 
 - (void)buttonClick:(NSInteger)index {
     [_bottomScrollView setContentOffset:CGPointMake(self.view.frame.size.width * index, 0) animated:YES];
+    
+    [self changeTitle];
 }
 
-
+- (void)changeTitle {
+    NSMutableArray *titles = @[].mutableCopy;
+    for (int i = 0; i < 4; i ++) {
+        int x = arc4random() % 100;
+        [titles addObject:[NSString stringWithFormat:@"%d",x]];
+    }
+    _exampleSegmentView4.titleArray = titles;
+    
+}
 @end
