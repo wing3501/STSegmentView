@@ -91,14 +91,14 @@
     
     
     _exampleSegmentView4.outScrollView = _bottomScrollView;
-    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self changeTitle];
+    });
 }
 
 
 - (void)buttonClick:(NSInteger)index {
     [_bottomScrollView setContentOffset:CGPointMake(self.view.frame.size.width * index, 0) animated:YES];
-    
-    [self changeTitle];
 }
 
 - (void)changeTitle {

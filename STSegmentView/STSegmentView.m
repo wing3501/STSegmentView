@@ -48,16 +48,35 @@
             bottomLabel.text = titleArray[i];
             topLabel.text = titleArray[i];
         }
+        _titleArray = titleArray;
     }else{
         _titleArray = titleArray;
-        
+        [self removeAllSubViews];
         if (titleArray.count) {
-            [self.bottomLabelArray removeAllObjects];
-            [self.topLabelArray removeAllObjects];
-            [self.buttonArray removeAllObjects];
+            
             self.titleLabelW = (self.bounds.size.width - _titleSpacing * (titleArray.count - 1))/titleArray.count;
         }
     }
+}
+
+
+
+/**
+ 移除所有字视图
+ */
+- (void)removeAllSubViews {
+    for (UIView *view in self.bottomLabelArray) {
+        [view removeFromSuperview];
+    }
+    for (UIView *view in self.topLabelArray) {
+        [view removeFromSuperview];
+    }
+    for (UIView *view in self.buttonArray) {
+        [view removeFromSuperview];
+    }
+    [self.bottomLabelArray removeAllObjects];
+    [self.topLabelArray removeAllObjects];
+    [self.buttonArray removeAllObjects];
 }
 
 
