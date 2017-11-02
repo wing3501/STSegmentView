@@ -19,7 +19,7 @@
 @property (nonatomic,strong) UIView *selectedBgView;
 
 /*!@brief 外部的滚动视图*/
-@property(nonatomic,weak) UIScrollView *outScrollView;
+@property(nonatomic,strong) UIScrollView *outScrollView;
 /*!@brief 代理*/
 @property(nonatomic,weak) id<STSegmentViewDelegate> delegate;
 /*!@brief 标题数组*/

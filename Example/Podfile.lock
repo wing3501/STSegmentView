@@ -1,5 +1,5 @@
 PODS:
-  - STSegmentView (0.5.0)
+  - STSegmentView (0.5.4)
 
 DEPENDENCIES:
   - STSegmentView (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  STSegmentView: 2bab935655f53fbf4b927d172449bd20b90c3ab1
+  STSegmentView: d332879a563ccd9d191c1990643266e983bb25b4
 
 PODFILE CHECKSUM: 5e834de121d51f558615ef8bcd8dccac59eaf674
 
